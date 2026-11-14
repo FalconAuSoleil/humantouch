@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* eXalt theme from Smart Portfolio: Poppins, Bleu eXalt on white, rose accent, flat surfaces.
+   Job seekers = Bleu eXalt, employers = Rose eXalt, Nemotron = NVIDIA green. */
+@theme inline {
+  --font-sans: var(--font-poppins), "Century Gothic", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-ink: #08006c;
+  --color-body: #464556;
+  --color-muted: #6e6c80;
+  --color-line: #e4e3ef;
+  --color-soft: #f5f4ff;
+  --color-cand: #5853ff;
+  --color-cand-dark: #3d34e6;
+  --color-cand-soft: #eeecff;
+  --color-emp: #e6007e;
+  --color-emp-dark: #b30069;
+  --color-emp-soft: #ffe5f2;
+  --color-profond: #2f2f9b;
+  --color-rose: #ff2c9b;
+  --color-jaune: #ffda3e;
+  --color-nv: #76b900;
+
+  /* Tailwind scales remapped to the eXalt tones */
+  --color-slate-50: #f8f7ff;
+  --color-slate-100: #f0eff8;
+  --color-slate-200: #e4e3ef;
+  --color-slate-300: #c7c4d9;
+  --color-slate-400: #a3a1b5;
+  --color-slate-500: #6e6c80;
+  --color-slate-600: #5a5870;
+  --color-slate-700: #464556;
+  --color-teal-50: #eeecff;
+  --color-teal-500: #8f8bff;
+  --color-teal-700: #3d34e6;
+  --color-teal-800: #2f2f9b;
+  --color-teal-900: #08006c;
+  --color-indigo-800: #b30069;
+  --color-indigo-900: #8a0051;
+  --color-rose-50: #fff0f7;
+  --color-rose-100: #ffe5f2;
+  --color-rose-200: #ffc2e0;
+  --color-rose-500: #ff2c9b;
+  --color-rose-600: #b30069;
+  --color-rose-700: #b30069;
+  --color-rose-800: #8a0051;
+  --color-emerald-50: #eefaf3;
+  --color-emerald-100: #e6f6ee;
+  --color-emerald-500: #22a05a;
+  --color-emerald-600: #17703f;
+  --color-emerald-700: #17703f;
+  --color-emerald-800: #0f5530;
+  --color-emerald-900: #0f5530;
+  --color-amber-50: #fffbe6;
+  --color-amber-100: #fff4c4;
+  --color-amber-300: #ffda3e;
+  --color-amber-500: #e9a800;
+  --color-amber-600: #b98400;
+  --color-amber-700: #2f2f9b;
+  --color-amber-800: #2f2f9b;
+  --color-amber-900: #08006c;
+  --color-sky-100: #eeecff;
+  --color-sky-700: #3d34e6;
+  --color-violet-100: #ffe5f2;
+  --color-violet-700: #b30069;
+}
+
+:root { color-scheme: light; }
+
+body {
+  background: #f5f5f7;
+  color: var(--color-body);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: rgba(88, 83, 255, 0.2); }
+h1, h2, h3, h4 { color: var(--color-ink); }
+
+/* Signature: the rose to blue dash of eXalt documents */
+.signature { background: linear-gradient(90deg, var(--color-rose), var(--color-cand)); }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-cand-dark); }
+.eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--color-rose), var(--color-cand)); }
+.eyebrow.emp { color: var(--color-emp-dark); }
+
+/* ---------- Voice orb (from Smart Portfolio) ---------- */
+.orb { --size: 120px; position: relative; width: var(--size); height: var(--size); transition: transform 0.2s ease-out; }
+.orb.speaking { transform: scale(1.08); }
+.orb-halo { position: absolute; inset: -22%; border-radius: 50%; background: conic-gradient(from 0deg, #5853ff, #ff2c9b, #8f8bff, #2f2f9b, #5853ff); filter: blur(28px); opacity: 0.35; animation: orb-spin 9s linear infinite; transition: opacity 0.4s ease; }
+.orb-body { position: absolute; inset: 0; overflow: hidden; border-radius: 50%; background: radial-gradient(circle at 50% 60%, #5853ff 0%, #2f2f9b 70%, #08006c 100%); box-shadow: inset 0 -10px 24px rgba(8, 0, 108, 0.55), inset 0 6px 16px rgba(255, 255, 255, 0.25), 0 12px 32px rgba(88, 83, 255, 0.35); isolation: isolate; }
+.orb-swirl { position: absolute; inset: -30%; background: conic-gradient(from 90deg, transparent 0deg, #ff2c9b 50deg, transparent 120deg, #8f8bff 200deg, transparent 260deg, rgba(199, 196, 255, 0.55) 320deg, transparent 360deg); filter: blur(14px); mix-blend-mode: screen; opacity: 0.85; animation: orb-spin 7s linear infinite; }
+.orb-swirl.reverse { inset: -10%; background: radial-gradient(circle at 30% 30%, rgba(255, 44, 155, 0.9), transparent 45%), radial-gradient(circle at 75% 70%, rgba(143, 139, 255, 0.95), transparent 50%); filter: blur(10px); opacity: 0.7; animation: orb-spin 11s linear infinite reverse; }
+.orb-shine { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(ellipse 45% 30% at 35% 22%, rgba(255, 255, 255, 0.75), transparent 70%), radial-gradient(circle at 50% 50%, transparent 62%, rgba(255, 255, 255, 0.18) 72%, transparent 80%); }
+.orb.listening .orb-halo { opacity: 0.5; animation-duration: 6s; }
+.orb.listening::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ff2c9b; opacity: 0; animation: orb-ping 2s ease-out infinite; }
+.orb.speaking .orb-halo { opacity: 0.8; animation-duration: 3s; }
+.orb.speaking .orb-swirl { animation-duration: 2.6s; }
+.orb.speaking .orb-swirl.reverse { animation-duration: 4s; }
+.orb.thinking .orb-swirl { animation-duration: 1.6s; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-ping { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.6); opacity: 0; } }
+
+/* ---------- Interview tiers: a staircase that fills as the interview advances ---------- */
+.ladder-track { display: flex; align-items: stretch; gap: 6px; height: 96px; }
+.ladder-step { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; }
+.ladder-badge { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 0.7rem; font-weight: 700; background: #fff; color: var(--color-muted); border: 1px solid #c7c4d9; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+.ladder-column { position: relative; flex: none; height: calc(var(--rise) * 0.74); width: 100%; border-radius: 8px 8px 3px 3px; background: var(--color-line); overflow: hidden; }
+.ladder-fill { position: absolute; inset: auto 0 0 0; height: calc(var(--fill) * 100%); background: linear-gradient(0deg, #5853ff, #8f8bff); transition: height 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ladder-step.active .ladder-badge { border-color: #5853ff; color: #5853ff; }
+.ladder-step.active .ladder-column { box-shadow: 0 0 0 2px #5853ff inset; }
+.ladder-step.active .ladder-fill { animation: ladder-breathe 2.4s ease-in-out infinite; }
+.ladder-step.done .ladder-badge { background: #5853ff; border-color: #5853ff; color: #fff; }
+.ladder-step.done .ladder-fill { background: linear-gradient(0deg, #2f2f9b, #5853ff 55%, #ff2c9b); }
+@keyframes ladder-breathe { 50% { opacity: 0.7; } }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fade-up 0.35s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orb *, .orb::after, .ladder-step *, .fade-up { animation: none !important; }
+}
